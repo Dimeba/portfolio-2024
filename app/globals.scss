@@ -1,0 +1,47 @@
+@use 'base';
+
+html,
+body {
+	padding: 0;
+	margin: 0;
+}
+
+body {
+	background-color: base.$background;
+}
+
+* {
+	box-sizing: border-box;
+	scroll-behavior: smooth;
+	scroll-padding-top: 10rem;
+	color: base.$text;
+}
+
+main {
+	max-width: 1100px;
+	width: 90vw;
+	margin: 0 auto;
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	grid-gap: 2rem;
+}
+
+h1 {
+	font-size: 3rem;
+	color: base.$title;
+	margin: 0;
+}
+
+@media screen and (max-width: 1024px) {
+	main {
+		display: flex;
+		flex-direction: column;
+		gap: 2rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	h1 {
+		font-size: 2.25rem;
+	}
+}

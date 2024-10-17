@@ -14,7 +14,6 @@ body {
 	box-sizing: border-box;
 	scroll-behavior: smooth;
 	scroll-padding-top: 10rem;
-	color: base.$text;
 }
 
 main {
@@ -26,10 +25,48 @@ main {
 	grid-gap: 2rem;
 }
 
-h1 {
-	font-size: 3rem;
+%title {
 	color: base.$title;
 	margin: 0;
+}
+
+h1 {
+	@extend %title;
+	font-size: 3rem;
+	font-weight: 700;
+}
+
+h2 {
+	@extend %title;
+	font-size: 1.25rem;
+	font-weight: 500;
+}
+
+h3 {
+	@extend %title;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+p {
+	color: base.$text;
+	line-height: 1.5;
+	margin: 0;
+}
+
+a {
+	text-decoration: none;
+	color: base.$text;
+}
+
+::selection {
+	background-color: base.$highlight;
+	color: base.$background;
+}
+
+::-moz-selection {
+	background-color: base.$highlight;
+	color: base.$background;
 }
 
 @media screen and (max-width: 1024px) {
@@ -43,5 +80,9 @@ h1 {
 @media screen and (max-width: 768px) {
 	h1 {
 		font-size: 2.25rem;
+	}
+
+	h2 {
+		font-size: 1.125rem;
 	}
 }

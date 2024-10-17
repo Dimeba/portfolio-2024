@@ -32,7 +32,8 @@ const Hero = () => {
 		'Prismic',
 		'Adobe CC',
 		'Figma',
-		'Unity'
+		'Unity',
+		'WordPress'
 	]
 
 	return (
@@ -47,26 +48,29 @@ const Hero = () => {
 					</p>
 				</div>
 
-				<div className={styles.skills}>
-					<div>
-						<h3>Programming Languages</h3>
-						<ul>
-							<Skills skills={languages} />
-						</ul>
-					</div>
+				<div>
+					<h3 className={styles.skillsTitle}>Skills</h3>
+					<div className={styles.skillsContainer}>
+						<div>
+							<p>Programming Languages</p>
+							<ul>
+								<Skills skills={languages} />
+							</ul>
+						</div>
 
-					<div>
-						<h3>Libraries & Frameworks</h3>
-						<ul>
-							<Skills skills={frameworks} />
-						</ul>
-					</div>
+						<div>
+							<p>Libraries & Frameworks</p>
+							<ul>
+								<Skills skills={frameworks} />
+							</ul>
+						</div>
 
-					<div>
-						<h3>Tools & Platforms</h3>
-						<ul>
-							<Skills skills={tools} />
-						</ul>
+						<div>
+							<p>Tools & Platforms</p>
+							<ul>
+								<Skills skills={tools} />
+							</ul>
+						</div>
 					</div>
 				</div>
 			</div>

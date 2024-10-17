@@ -34,13 +34,18 @@
 	}
 }
 
-.skills {
+.skillsTitle {
+	margin-bottom: 1.25rem;
+}
+
+.skillsContainer {
 	display: flex;
 	flex-direction: column;
-	gap: 2rem;
+	gap: 1.25rem;
 
-	h3 {
-		margin-bottom: 1.25rem;
+	p {
+		margin-bottom: 0.75rem;
+		font-size: 0.875rem;
 	}
 
 	ul {

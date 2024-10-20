@@ -5,17 +5,19 @@ import styles from './Hero.module.scss'
 import Header from './Header'
 import Social from './Social'
 
-const Hero = () => {
+interface Props {
+	jobTitle: string
+	about: string
+}
+
+const Hero: React.FC<Props> = ({ jobTitle, about }) => {
 	return (
 		<section className={styles.hero}>
 			<div className={styles.info}>
 				<div>
 					<h1>Filip Stojanović</h1>
-					<h2>Front-End Developer & Designer</h2>
-					<p>
-						I build creative, high-impact solutions from concept to launch
-						across diverse industries.
-					</p>
+					<h2>{jobTitle}</h2>
+					<p>{about}</p>
 				</div>
 
 				<Header />

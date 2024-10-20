@@ -14,6 +14,11 @@ const Content = () => {
 				<h2>Experience</h2>
 				<Cards />
 			</div>
+
+			<div className={styles.section}>
+				<h2>Select Projects</h2>
+				<Cards />
+			</div>
 		</section>
 	)
 }

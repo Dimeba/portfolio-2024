@@ -1,0 +1,14 @@
+@use '@/app/base';
+
+.content {
+	padding: 6rem 0;
+	display: flex;
+	flex-direction: column;
+	gap: 6rem;
+}
+
+.section {
+	h2 {
+		margin-bottom: 3rem;
+	}
+}

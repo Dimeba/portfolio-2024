@@ -7,11 +7,16 @@ import styles from './Card.module.scss'
 import Skills from './Skills'
 
 // hooks
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
-const Card = () => {
-	// temp data
-	const content: number[] = [1, 2, 3, 4]
+// types
+import { ContentItemEntry } from '@/types/contentfulTypes'
+
+interface Props {
+	items: ContentItemEntry[]
+}
+
+const Card: React.FC<Props> = ({ items }) => {
 	const skills: string[] = [
 		'JavaScript',
 		'TypeScript',
@@ -38,9 +43,9 @@ const Card = () => {
 			onMouseEnter={toggleOpacity}
 			onMouseLeave={toggleOpacity}
 		>
-			{content.map((item, index) => (
+			{items.map((item, index) => (
 				<div
-					key={index}
+					key={item.sys.id}
 					className={styles.card}
 					onMouseEnter={() => handleHover(index)}
 					onMouseLeave={() => setHoveredCard(null)}
@@ -58,7 +63,7 @@ const Card = () => {
 					</div>
 
 					<div className={styles.content}>
-						<h3>Ariel Property Advisors</h3>
+						<h3>{item.title}</h3>
 						<p>Card</p>
 
 						<Skills skills={skills} />

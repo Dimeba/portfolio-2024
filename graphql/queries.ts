@@ -33,7 +33,42 @@ export const GET_CONTENT_ITEMS = gql`
 					id
 				}
 				title
+				contentCollection {
+					items {
+						sys {
+							id
+						}
+					}
+				}
 			}
+		}
+	}
+`
+
+export const GET_CONTENT_ITEM = gql`
+	query GetContentItem($id: String!) {
+		contentItem(id: $id, locale: "en-US") {
+			sys {
+				id
+			}
+			title
+			subtitle
+			link
+			date
+			image {
+				fileName
+				url
+			}
+			description {
+				json
+			}
+			referencesCollection {
+				items {
+					title
+					link
+				}
+			}
+			skills
 		}
 	}
 `

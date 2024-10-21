@@ -1,4 +1,5 @@
 // components
+import { Suspense } from 'react'
 import Hero from '@/components/Hero'
 import Content from '@/components/Content'
 
@@ -7,14 +8,12 @@ import apolloClient from '@/lib/apolloClient'
 import { GET_HOME_PAGE, GET_CONTENT_ITEMS } from '@/graphql/queries'
 
 // types
-import { Suspense } from 'react'
 import {
 	HomepageEntry,
 	GetHomepageEntriesResponse,
-	ContentItemEntry,
+	ContentItemsEntry,
 	GetContentItemsResponse
 } from '@/types/contentfulTypes'
-import { title } from 'process'
 
 export default async function Home() {
 	// fetch homepage data
@@ -32,7 +31,7 @@ export default async function Home() {
 		})
 
 	// Experience data
-	const experience: ContentItemEntry =
+	const experience: ContentItemsEntry =
 		contentItemsData.contentItemsCollection.items.find(
 			title => title.title === 'Experience'
 		) ??
@@ -41,7 +40,7 @@ export default async function Home() {
 		})()
 
 	// Select Projects data
-	const selectProjects: ContentItemEntry =
+	const selectProjects: ContentItemsEntry =
 		contentItemsData.contentItemsCollection.items.find(
 			title => title.title === 'Select Projects'
 		) ??
@@ -51,7 +50,7 @@ export default async function Home() {
 
 	return (
 		<main>
-			<Suspense fallback={<div>Loading...</div>}>
+			<Suspense fallback={<p>Loading...</p>}>
 				<Hero jobTitle={homepageEntry.jobTitle} about={homepageEntry.about} />
 				<Content
 					bio={homepageEntry.bio}

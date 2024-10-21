@@ -30,7 +30,7 @@
 	opacity: 0.5;
 }
 
-.date {
+.leftColumn {
 	p {
 		font-size: 0.75rem;
 		font-weight: 600;
@@ -40,6 +40,11 @@
 	}
 }
 
+.image {
+	position: relative;
+	aspect-ratio: 16 / 10;
+}
+
 .content {
 	grid-column: span 3;
 	display: flex;
@@ -47,11 +52,41 @@
 	gap: 1rem;
 }
 
+.title {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+
+	p {
+		font-size: 0.875rem;
+	}
+}
+
+.description {
+	* {
+		font-size: 0.875rem;
+	}
+}
+
 @media screen and (max-width: 1024px) {
 }
 
 @media screen and (max-width: 768px) {
-	.date {
+	.card {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.reverse {
+		flex-direction: column-reverse;
+		gap: 1.5rem;
+	}
+
+	.image {
+		width: 50%;
+	}
+
+	.leftColumn {
 		grid-column: span 2;
 	}
 

@@ -1,5 +1,3 @@
-'use client'
-
 // styles
 import styles from './Social.module.scss'
 
@@ -9,20 +7,7 @@ import { FaGithub } from 'react-icons/fa'
 import { FaLinkedin } from 'react-icons/fa'
 import { FaBehance } from 'react-icons/fa'
 
-// hooks
-import { useState } from 'react'
-
 const Social = () => {
-	const [hoveredIcon, setHoveredIcon] = useState<string | null>(null)
-
-	const handleMouseEnter = (icon: string): void => {
-		setHoveredIcon(icon)
-	}
-
-	const handleMouseLeave = (): void => {
-		setHoveredIcon(null)
-	}
-
 	interface SocialMedia {
 		name: string
 		icon: IconType
@@ -54,13 +39,9 @@ const Social = () => {
 					key={index}
 					href={media.url}
 					aria-label={`Link to ${media.name} profile`}
-					onMouseEnter={() => handleMouseEnter(media.name)}
-					onMouseLeave={handleMouseLeave}
+					className={styles.icon}
 				>
-					<media.icon
-						color={hoveredIcon === media.name ? '#e2e8f0' : '#94a3b8'}
-						size={24}
-					/>
+					<media.icon size={24} />
 				</a>
 			))}
 		</div>

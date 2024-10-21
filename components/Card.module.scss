@@ -3,7 +3,7 @@
 .cards {
 	display: flex;
 	flex-direction: column;
-	gap: 3rem;
+	gap: 4rem;
 }
 
 .card {
@@ -11,6 +11,7 @@
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 1rem;
 	position: relative;
+	cursor: pointer;
 }
 
 .background {
@@ -52,7 +53,7 @@
 	gap: 1rem;
 }
 
-.title {
+.titleContainer {
 	display: flex;
 	flex-direction: column;
 	gap: 0.25rem;
@@ -62,9 +63,60 @@
 	}
 }
 
+.title {
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	transition: 0.3s;
+
+	svg {
+		color: base.$title;
+		transition: 0.2s;
+	}
+}
+
+.card:hover {
+	.title {
+		h3 {
+			color: base.$highlight;
+		}
+
+		svg {
+			color: base.$highlight;
+			transform: translateY(-0.25rem) translateX(0.25rem);
+		}
+	}
+}
+
 .description {
 	* {
 		font-size: 0.875rem;
+	}
+}
+
+.references {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 1rem;
+	margin-bottom: 0.5rem;
+}
+
+.reference {
+	display: flex;
+	gap: 0.25rem;
+	align-items: center;
+	color: base.$title;
+
+	p {
+		font-size: 0.75rem;
+		color: base.$title;
+	}
+}
+
+.reference:hover {
+	color: base.$highlight;
+	p {
+		color: base.$highlight;
 	}
 }
 
@@ -72,6 +124,10 @@
 }
 
 @media screen and (max-width: 768px) {
+	.cards {
+		gap: 3rem;
+	}
+
 	.card {
 		display: flex;
 		flex-direction: column;

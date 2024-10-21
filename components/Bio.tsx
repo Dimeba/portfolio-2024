@@ -13,7 +13,11 @@ interface Props {
 }
 
 const Bio: React.FC<Props> = ({ bio }) => {
-	return <div className={styles.bio}>{documentToReactComponents(bio.json)}</div>
+	return (
+		<div className={styles.bio} id='about'>
+			{documentToReactComponents(bio.json)}
+		</div>
+	)
 }
 
 export default Bio

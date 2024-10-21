@@ -56,6 +56,8 @@ export default async function Home() {
 					bio={homepageEntry.bio}
 					experience={experience}
 					selectProjects={selectProjects}
+					disclaimer={homepageEntry.disclaimer}
+					resume={homepageEntry.resume}
 				/>
 			</Suspense>
 		</main>

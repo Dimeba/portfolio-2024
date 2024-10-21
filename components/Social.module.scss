@@ -4,3 +4,15 @@
 	display: flex;
 	gap: 1.25rem;
 }
+
+.icon {
+	svg {
+		color: base.$text-dark;
+	}
+}
+
+.icon:hover {
+	svg {
+		color: base.$title;
+	}
+}

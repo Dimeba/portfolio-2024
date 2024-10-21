@@ -3,29 +3,29 @@ import Hero from '@/components/Hero'
 import Content from '@/components/Content'
 
 // lib
-import { getEntries } from '@/lib/contentful'
+import apolloClient from '@/lib/apolloClient'
+import { GET_HOME_PAGE } from '@/graphql/queries'
 
 // types
-import { HomepageSkeleton, Homepage } from '@/types/contentfulTypes'
-import { EntryCollection } from 'contentful'
+import { Suspense } from 'react'
+import {
+	HomepageEntry,
+	GetHomepageEntriesResponse
+} from '@/types/contentfulTypes'
 
 export default async function Home() {
-	const pages: EntryCollection<HomepageSkeleton> =
-		await getEntries<HomepageSkeleton>({
-			content_type: 'homepage',
-			order: ['sys.createdAt'],
-			locale: 'en-US'
-		})
+	const { data } = await apolloClient.query<GetHomepageEntriesResponse>({
+		query: GET_HOME_PAGE
+	})
 
-	const homepageEntry: Homepage = pages.items[0]
+	const homepageEntry: HomepageEntry = data.homepageCollection.items[0]
 
 	return (
 		<main>
-			<Hero
-				jobTitle={homepageEntry.fields.jobTitle as string}
-				about={homepageEntry.fields.about as string}
-			/>
-			<Content />
+			<Suspense fallback={<div>Loading...</div>}>
+				<Hero jobTitle={homepageEntry.jobTitle} about={homepageEntry.about} />
+				<Content />
+			</Suspense>
 		</main>
 	)
 }

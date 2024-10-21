@@ -24,3 +24,16 @@ export const GET_HOME_PAGE = gql`
 		}
 	}
 `
+
+export const GET_CONTENT_ITEMS = gql`
+	query GetContentItems {
+		contentItemsCollection(locale: "en-US") {
+			items {
+				sys {
+					id
+				}
+				title
+			}
+		}
+	}
+`

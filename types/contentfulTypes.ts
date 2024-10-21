@@ -9,6 +9,10 @@ type Asset = {
 	url: string
 }
 
+export type RichText = {
+	json: Document
+}
+
 // Homepage
 
 export type HomepageEntry = {
@@ -17,8 +21,8 @@ export type HomepageEntry = {
 	jobTitle: string
 	about: string
 	resume: Asset
-	bio: Document
-	disclaimer: Document
+	bio: RichText
+	disclaimer: RichText
 }
 
 export type HomepageCollection = {
@@ -27,4 +31,19 @@ export type HomepageCollection = {
 
 export type GetHomepageEntriesResponse = {
 	homepageCollection: HomepageCollection
+}
+
+// Content Items
+
+export type ContentItemEntry = {
+	sys: Sys
+	title: string
+}
+
+export type ContentItemsCollection = {
+	items: ContentItemEntry[]
+}
+
+export type GetContentItemsResponse = {
+	contentItemsCollection: ContentItemsCollection
 }

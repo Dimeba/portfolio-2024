@@ -5,6 +5,9 @@ import styles from './Hero.module.scss'
 import Header from './Header'
 import Social from './Social'
 
+// types
+import { EntryFieldTypes } from 'contentful'
+
 interface Props {
 	jobTitle: string
 	about: string

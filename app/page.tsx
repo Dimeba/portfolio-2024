@@ -6,20 +6,25 @@ import Content from '@/components/Content'
 import { getEntries } from '@/lib/contentful'
 
 // types
-import { HomepageFields } from '@/types/contentfulTypes'
+import { HomepageSkeleton, Homepage } from '@/types/contentfulTypes'
+import { EntryCollection } from 'contentful'
 
 export default async function Home() {
-	const pages = await getEntries('homepage')
-	const homepage = pages.items[0].fields
+	const pages: EntryCollection<HomepageSkeleton> =
+		await getEntries<HomepageSkeleton>({
+			content_type: 'homepage',
+			order: ['sys.createdAt'],
+			locale: 'en-US'
+		})
 
-	const jobTitle: string =
-		typeof homepage.jobTitle === 'string' ? homepage.jobTitle : ''
-
-	const about: string = typeof homepage.about === 'string' ? homepage.about : ''
+	const homepageEntry: Homepage = pages.items[0]
 
 	return (
 		<main>
-			<Hero jobTitle={jobTitle} about={about} />
+			<Hero
+				jobTitle={homepageEntry.fields.jobTitle as string}
+				about={homepageEntry.fields.about as string}
+			/>
 			<Content />
 		</main>
 	)

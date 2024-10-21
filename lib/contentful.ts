@@ -1,21 +1,19 @@
-import { createClient } from 'contentful'
+
+import { createClient, EntryCollection, Entry, EntrySkeletonType } from 'contentful';
 
 const client = createClient({
-	space: process.env.space || '',
-	accessToken: process.env.accessToken || ''
-})
+  space: process.env.space || '',
+  accessToken: process.env.accessToken || '',
+});
 
-export async function getEntries(contentType: string) {
-	const content = await client.getEntries({
-		content_type: contentType,
-		order: ['sys.createdAt']
-	})
-
-	return content
+export async function getEntries<T extends EntrySkeletonType>(
+  query: object
+): Promise<EntryCollection<T>> {
+  const content = await client.getEntries<T>(query);
+  return content;
 }
 
-export async function getEntry(id: string) {
-	const item = await client.getEntry(id)
-
-	return item
+export async function getEntry<T extends EntrySkeletonType>(id: string): Promise<Entry<T>> {
+  const item = await client.getEntry<T>(id);
+  return item;
 }

@@ -1,50 +1,54 @@
-import { Entry, Asset } from 'contentful'
+import { Entry, Asset, EntrySkeletonType, EntryFieldTypes } from 'contentful'
 import { Document } from '@contentful/rich-text-types'
 
-export interface Service extends Entry {
-	fields: { title: string; description: string; image: Asset }
+// Reference Interface
+export interface Reference {
+	sys: {
+		id: string
+		linkType: string
+		type: string
+	}
 }
 
-export interface ReferenceProject extends Entry {
+// ReferenceProject Skeleton and Type
+export interface ReferenceProjectSkeleton extends EntrySkeletonType {
+	contentTypeId: 'referenceProject'
 	fields: {
 		title: string
 		link: string
 	}
 }
+export type ReferenceProject = Entry<ReferenceProjectSkeleton>
 
-export interface ContentItem extends Entry {
+// ContentItem Skeleton and Type
+export interface ContentItemSkeleton extends EntrySkeletonType {
+	contentTypeId: 'contentItem'
 	fields: {
-		title: string
-		subtitle: string
-		link: string
-		date: string
+		title: EntryFieldTypes.Symbol
+		subtitle: EntryFieldTypes.Symbol
+		link: EntryFieldTypes.Symbol
+		date: EntryFieldTypes.Symbol
 		image: Asset
 		description: Document
-		references: { sys: { id: string } }[]
-		skills: string[]
+		references: Reference[]
+		skills: EntryFieldTypes.Symbol[]
 	}
 }
 
-export interface HomepageFields {
-	title: string
-	jobTitle: string
-	about: string
-	resume: Asset
-	bio: Document
-	experience: { sys: { id: string } }[]
-	projects: { sys: { id: string } }[]
-	disclaimer: Document
-}
+export type ContentItem = Entry<ContentItemSkeleton>
 
-export interface Homepage extends Entry {
+// Homepage Skeleton and Type
+export interface HomepageSkeleton extends EntrySkeletonType {
+	contentTypeId: 'homepage'
 	fields: {
-		title: string
-		jobTitle: string
-		about: string
+		title: EntryFieldTypes.Symbol
+		jobTitle: EntryFieldTypes.Symbol
+		about: EntryFieldTypes.Text
 		resume: Asset
 		bio: Document
-		experience: { sys: { id: string } }[]
-		projects: { sys: { id: string } }[]
+		experience: ContentItem[]
+		projects: ReferenceProject[]
 		disclaimer: Document
 	}
 }
+export type Homepage = Entry<HomepageSkeleton>

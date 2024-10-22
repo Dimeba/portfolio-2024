@@ -52,7 +52,11 @@ export default async function Home() {
 	return (
 		<main>
 			<Suspense fallback={<Loader />}>
-				<Hero jobTitle={homepageEntry.jobTitle} about={homepageEntry.about} />
+				<Hero
+					jobTitle={homepageEntry.jobTitle}
+					about={homepageEntry.about}
+					resume={homepageEntry.resume}
+				/>
 				<Content
 					bio={homepageEntry.bio}
 					experience={experience}

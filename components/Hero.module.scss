@@ -16,7 +16,7 @@
 .info {
 	display: flex;
 	flex-direction: column;
-	gap: 4rem;
+	gap: 2rem;
 
 	h1 {
 		margin-bottom: 0.875rem;
@@ -63,6 +63,25 @@
 			border-radius: 50px;
 		}
 	}
+}
+
+.resume {
+	color: base.$highlight;
+	padding: 0.5rem 1rem;
+	border: 2px solid base.$highlight;
+	width: fit-content;
+	border-radius: 4px;
+	font-weight: 600;
+	transition: 0.2s;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+}
+
+.resume:hover {
+	background-color: base.$highlight;
+	color: base.$background;
+	gap: 1rem;
 }
 
 @media screen and (max-width: 1024px) {

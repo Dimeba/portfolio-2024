@@ -72,7 +72,7 @@ const Content: React.FC<Props> = async ({
 
 				<a href={resume.url} aria-label='Link to my resume.' target='_blank'>
 					<div className={styles.resumeLink}>
-						<p>View Full Résumé</p>
+						<p>View Full Resume</p>
 						<BsArrowRight size={20} />
 					</div>
 				</a>

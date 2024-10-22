@@ -78,6 +78,10 @@ a {
 }
 
 @media screen and (max-width: 768px) {
+	main {
+		gap: 0;
+	}
+
 	h1 {
 		font-size: 2.25rem;
 	}

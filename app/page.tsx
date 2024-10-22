@@ -1,8 +1,6 @@
 // components
-import { Suspense } from 'react'
 import Hero from '@/components/Hero'
 import Content from '@/components/Content'
-import Loader from '@/components/Loader'
 
 // lib
 import apolloClient from '@/lib/apolloClient'
@@ -51,20 +49,18 @@ export default async function Home() {
 
 	return (
 		<main>
-			<Suspense fallback={<Loader />}>
-				<Hero
-					jobTitle={homepageEntry.jobTitle}
-					about={homepageEntry.about}
-					resume={homepageEntry.resume}
-				/>
-				<Content
-					bio={homepageEntry.bio}
-					experience={experience}
-					selectProjects={selectProjects}
-					disclaimer={homepageEntry.disclaimer}
-					resume={homepageEntry.resume}
-				/>
-			</Suspense>
+			<Hero
+				jobTitle={homepageEntry.jobTitle}
+				about={homepageEntry.about}
+				resume={homepageEntry.resume}
+			/>
+			<Content
+				bio={homepageEntry.bio}
+				experience={experience}
+				selectProjects={selectProjects}
+				disclaimer={homepageEntry.disclaimer}
+				resume={homepageEntry.resume}
+			/>
 		</main>
 	)
 }

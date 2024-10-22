@@ -6,6 +6,8 @@ import './globals.scss'
 // components
 import Background from '@/components/Background'
 import Header from '@/components/Header'
+import { Suspense } from 'react'
+import Loader from '@/components/Loader'
 
 // fonts
 import { Inter } from 'next/font/google'
@@ -32,9 +34,11 @@ export default function RootLayout({
 				<link rel='icon' href='/favicon.svg' type='image/svg+xml' />
 			</head>
 			<body className={inter.className}>
-				<Header />
-				<Background />
-				{children}
+				<Suspense fallback={<Loader />}>
+					<Header />
+					<Background />
+					{children}
+				</Suspense>
 			</body>
 		</html>
 	)

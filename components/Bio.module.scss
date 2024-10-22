@@ -4,4 +4,13 @@
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+
+	a {
+		color: base.$title;
+		font-weight: 700;
+	}
+
+	a:hover {
+		color: base.$highlight;
+	}
 }

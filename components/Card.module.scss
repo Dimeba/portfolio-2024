@@ -75,6 +75,12 @@
 	}
 }
 
+.subtitle {
+	display: flex;
+	align-items: center;
+	gap: 0.25rem;
+}
+
 .card:hover {
 	.title {
 		h3 {

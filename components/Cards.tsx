@@ -9,6 +9,7 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 import Image from 'next/image'
 import { LuLink } from 'react-icons/lu'
 import { HiArrowUpRight } from 'react-icons/hi2'
+import { MdOutlineBusinessCenter } from 'react-icons/md'
 
 // hooks
 import { useState } from 'react'
@@ -80,7 +81,12 @@ const Card: React.FC<Props> = ({ items }) => {
 								<div className={styles.title}>
 									<h3>{item.title}</h3> <HiArrowUpRight size={14} />
 								</div>
-								{item.subtitle && <p>◦ {item.subtitle}</p>}
+								{item.subtitle && (
+									<div className={styles.subtitle}>
+										<MdOutlineBusinessCenter size={14} />
+										<p>{item.subtitle}</p>
+									</div>
+								)}
 							</div>
 							<div className={styles.description}>
 								{documentToReactComponents(item.description.json)}

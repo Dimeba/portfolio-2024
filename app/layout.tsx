@@ -5,6 +5,7 @@ import './globals.scss'
 
 // components
 import Background from '@/components/Background'
+import Header from '@/components/Header'
 
 // fonts
 import { Inter } from 'next/font/google'
@@ -14,7 +15,7 @@ const inter = Inter({ subsets: ['latin'] })
 export const metadata: Metadata = {
 	title: 'Filip Stojanovic',
 	description:
-		'Front web developer & designer with a passion for delivering creative, high-impact solutions from concept to launch across diverse industries.',
+		'Front web developer & designer with a passion for delivering creative, high-impact solutions from concept to launch.',
 	icons: {
 		icon: '/favicon.svg'
 	}
@@ -31,6 +32,7 @@ export default function RootLayout({
 				<link rel='icon' href='/favicon.svg' type='image/svg+xml' />
 			</head>
 			<body className={inter.className}>
+				<Header />
 				<Background />
 				{children}
 			</body>

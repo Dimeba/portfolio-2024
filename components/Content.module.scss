@@ -1,7 +1,8 @@
 @use '@/app/base';
 
 .content {
-	padding: 6rem 0;
+	padding-top: 10rem;
+	padding-bottom: 6rem;
 	display: flex;
 	flex-direction: column;
 	gap: 6rem;
@@ -25,7 +26,7 @@
 	transition: 0.3s;
 
 	svg {
-		transition: 0.2s;
+		transition: transform 0.2s;
 	}
 }
 
@@ -49,11 +50,11 @@
 }
 
 @media screen and (max-width: 1024px) {
-}
-
-@media screen and (max-width: 768px) {
 	.content {
 		gap: 4rem;
 		padding: 4rem 0;
 	}
+}
+
+@media screen and (max-width: 768px) {
 }

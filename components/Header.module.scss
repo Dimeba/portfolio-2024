@@ -1,0 +1,119 @@
+@use '@/app/base';
+
+.header {
+	position: fixed;
+	width: 100%;
+	padding: 2rem 0;
+	z-index: 2;
+}
+
+.container {
+	max-width: 1100px;
+	width: 90vw;
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	* {
+		transition: 0.3s;
+	}
+
+	nav {
+		display: flex;
+		gap: 2rem;
+		align-items: center;
+		border-radius: 50px;
+	}
+}
+
+.link {
+	text-transform: uppercase;
+	font-size: 0.75rem;
+	letter-spacing: 1.2px;
+	font-weight: 600;
+	position: relative;
+	color: base.$text-dark;
+	// color: base.$background;
+}
+
+.link:hover {
+	color: base.$title;
+}
+
+.link:after {
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 2px;
+	right: 0;
+	bottom: -5px;
+	display: block;
+	background: base.$highlight;
+	transition: width 0.2s ease;
+	-webkit-transition: width 0.2s ease;
+}
+
+.link:hover:after {
+	width: 100%;
+	left: 0;
+}
+
+.hamburger {
+	color: base.$background;
+	background-color: base.$title;
+	border-radius: 50px;
+}
+
+.open {
+	background-color: base.$text-dark;
+	padding-left: 2rem;
+	background-color: base.$title;
+	box-shadow: 0 25px 45px rgba(0, 0, 0, 0.5);
+
+	* {
+		color: base.$background;
+	}
+
+	.link:hover {
+		color: base.$background !important;
+	}
+
+	.link:after {
+		background: base.$background;
+	}
+}
+
+.menu {
+	display: flex;
+	gap: 2rem;
+}
+
+@media screen and (max-width: 1024px) {
+	.container {
+		align-items: flex-start;
+	}
+
+	.open {
+		flex-direction: column-reverse;
+		padding-left: 1.5rem;
+		padding-right: 0;
+		padding-bottom: 2rem;
+		border-radius: 4px !important;
+		gap: 1rem !important;
+		align-items: flex-end !important;
+
+		.link {
+			margin-right: 1rem;
+			font-size: 1rem;
+		}
+	}
+
+	.menu {
+		display: flex;
+		flex-direction: column;
+		gap: 1rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+}

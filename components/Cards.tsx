@@ -28,6 +28,7 @@ interface Props {
 const Card: React.FC<Props> = ({ items }) => {
 	const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 	const [lowOpacity, setLowOpacity] = useState<boolean>(false)
+	const [isMobile, setIsMobile] = useState<boolean>(false)
 	const dispatch = useDispatch()
 
 	const toggleOpacity = () => {
@@ -38,20 +39,19 @@ const Card: React.FC<Props> = ({ items }) => {
 		window.open(url, '_blank', 'noopener,noreferrer')
 	}
 
-	// Check Device
-	const handleDevice = () => {
-		if (typeof window !== 'undefined') {
-			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-				navigator.userAgent
-			)
-		}
-		return false
-	}
-
-	const [isMobile, setIsMobile] = useState<boolean>(false)
-
+	// Check if mobile
 	useEffect(() => {
-		setIsMobile(handleDevice()) // Run the device check on the client-side only
+		const handleResize = (): void => {
+			setIsMobile(window.innerWidth < 1024)
+		}
+
+		handleResize()
+
+		window.addEventListener('resize', handleResize)
+
+		return () => {
+			window.removeEventListener('resize', handleResize)
+		}
 	}, [])
 
 	return (

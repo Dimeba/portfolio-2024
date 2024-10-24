@@ -10,7 +10,7 @@
 	grid-template-columns: repeat(4, 1fr);
 	grid-gap: 1rem;
 	position: relative;
-	cursor: pointer;
+	// cursor: none;
 	padding: 1.5rem 0;
 }
 
@@ -63,11 +63,17 @@
 	}
 }
 
+%noCursor {
+	cursor: none;
+}
+
 .title {
 	display: flex;
 	align-items: center;
 	gap: 0.5rem;
 	transition: 0.3s;
+	width: fit-content;
+	@extend %noCursor;
 
 	svg {
 		color: base.$title;
@@ -112,6 +118,7 @@
 	gap: 0.25rem;
 	align-items: center;
 	color: base.$title;
+	@extend %noCursor;
 
 	p {
 		font-size: 0.75rem;

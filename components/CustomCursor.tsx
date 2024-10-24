@@ -9,8 +9,15 @@ import { HiArrowUpRight } from 'react-icons/hi2'
 // hooks
 import { useEffect, useState } from 'react'
 
+// redux
+import { useSelector } from 'react-redux'
+import { RootState } from '@/redux/store'
+
 const CustomCursor = () => {
 	const [position, setPosition] = useState({ x: 0, y: 0 })
+	const cursorSize = useSelector((state: RootState) => state.cursor.cursorSize)
+	const showCursor = useSelector((state: RootState) => state.cursor.showCursor)
+	const icon = useSelector((state: RootState) => state.cursor.icon)
 
 	useEffect(() => {
 		const handleMouseMove = (e: MouseEvent): void => {
@@ -33,15 +40,18 @@ const CustomCursor = () => {
 					left: position.x
 				}}
 			></div>
-			{/* <div
-				className={styles.cursorElement}
-				style={{
-					top: position.y,
-					left: position.x
-				}}
-			>
-				<HiArrowUpRight size={32} />
-			</div> */}
+			{showCursor && (
+				<div
+					className={styles.cursorElement}
+					style={{
+						top: position.y,
+						left: position.x,
+						width: cursorSize
+					}}
+				>
+					{icon}
+				</div>
+			)}
 		</>
 	)
 }

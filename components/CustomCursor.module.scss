@@ -17,9 +17,9 @@
 
 .cursorElement {
 	@extend %elements;
-	height: 5rem;
 	aspect-ratio: 1;
 	background-color: base.$title;
+	backdrop-filter: blur(10px);
 	border-radius: 100px;
 	display: flex;
 	align-items: center;
@@ -27,5 +27,20 @@
 
 	svg {
 		color: base.$background;
+		animation: resize 0.3s ease-in-out;
+	}
+}
+
+@keyframes resize {
+	0% {
+		transform: scale(0);
+		opacity: 0;
+	}
+	75% {
+		transform: scale(1.1);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(1);
 	}
 }

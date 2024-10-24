@@ -1,7 +1,7 @@
 'use client'
 
 // styles
-import styles from './Card.module.scss'
+import styles from './Cards.module.scss'
 
 // components
 import Skills from './Skills'
@@ -13,6 +13,10 @@ import { MdOutlineBusinessCenter } from 'react-icons/md'
 
 // hooks
 import { useState } from 'react'
+import { handleMouseEnter, handleMouseLeave } from '@/hooks/cursorHandlers'
+
+// redux
+import { useDispatch } from 'react-redux'
 
 // types
 import { ContentItemEntry } from '@/types/contentfulTypes'
@@ -24,10 +28,7 @@ interface Props {
 const Card: React.FC<Props> = ({ items }) => {
 	const [hoveredCard, setHoveredCard] = useState<number | null>(null)
 	const [lowOpacity, setLowOpacity] = useState<boolean>(false)
-
-	const handleHoverCard = (index: number) => {
-		setHoveredCard(index)
-	}
+	const dispatch = useDispatch()
 
 	const toggleOpacity = () => {
 		setLowOpacity(!lowOpacity)
@@ -52,7 +53,7 @@ const Card: React.FC<Props> = ({ items }) => {
 				>
 					<div
 						className={`${styles.card} ${item.image ? styles.reverse : ''}`}
-						onMouseEnter={() => handleHoverCard(index)}
+						onMouseEnter={() => setHoveredCard(index)}
 						onMouseLeave={() => setHoveredCard(null)}
 						style={{
 							opacity: !lowOpacity || hoveredCard == index ? 1 : 0.5
@@ -78,7 +79,13 @@ const Card: React.FC<Props> = ({ items }) => {
 
 						<div className={styles.content}>
 							<div className={styles.titleContainer}>
-								<div className={styles.title}>
+								<div
+									className={styles.title}
+									onMouseEnter={() =>
+										handleMouseEnter(dispatch, <HiArrowUpRight size={24} />)
+									}
+									onMouseLeave={() => handleMouseLeave(dispatch)}
+								>
 									<h3>{item.title}</h3> <HiArrowUpRight size={14} />
 								</div>
 								{item.subtitle && (
@@ -100,6 +107,10 @@ const Card: React.FC<Props> = ({ items }) => {
 											onClick={() => openLinkInNewTab(reference.link)}
 											aria-label={`Link to ${reference.title} website.`}
 											className={styles.reference}
+											onMouseEnter={() =>
+												handleMouseEnter(dispatch, <HiArrowUpRight size={24} />)
+											}
+											onMouseLeave={() => handleMouseLeave(dispatch)}
 										>
 											<LuLink size={12} />
 											<p>{reference.title}</p>

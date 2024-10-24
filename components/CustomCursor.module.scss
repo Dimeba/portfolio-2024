@@ -1,0 +1,31 @@
+@use '@/app/base';
+
+%elements {
+	position: fixed;
+	pointer-events: none;
+	z-index: 9999;
+	transform: translate(-50%, -50%);
+}
+
+.cursorBackground {
+	@extend %elements;
+	height: 1024px;
+	aspect-ratio: 1;
+	background: radial-gradient(rgba(#2ceaa3, 0.2), transparent 50%);
+	mix-blend-mode: soft-light;
+}
+
+.cursorElement {
+	@extend %elements;
+	height: 5rem;
+	aspect-ratio: 1;
+	background-color: base.$title;
+	border-radius: 100px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	svg {
+		color: base.$background;
+	}
+}

@@ -8,6 +8,7 @@ import Background from '@/components/Background'
 import Header from '@/components/Header'
 import { Suspense } from 'react'
 import Loader from '@/components/Loader'
+import CustomCursor from '@/components/CustomCursor'
 
 // fonts
 import { Inter } from 'next/font/google'
@@ -35,6 +36,7 @@ export default function RootLayout({
 			</head>
 			<body className={inter.className}>
 				<Suspense fallback={<Loader />}>
+					<CustomCursor />
 					<Header />
 					<Background />
 					{children}

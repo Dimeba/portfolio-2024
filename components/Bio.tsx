@@ -5,7 +5,6 @@ import styles from './Bio.module.scss'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 
 // types
-import { Document } from '@contentful/rich-text-types'
 import { RichText } from '@/types/contentfulTypes'
 
 interface Props {

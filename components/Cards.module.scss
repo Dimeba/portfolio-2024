@@ -31,6 +31,10 @@
 	opacity: 0.5;
 }
 
+.lowOpacity {
+	opacity: 0.5;
+}
+
 .leftColumn {
 	p {
 		font-size: 0.75rem;
@@ -85,6 +89,10 @@
 	display: flex;
 	align-items: center;
 	gap: 0.25rem;
+
+	svg {
+		color: base.$text;
+	}
 }
 
 .card:hover {
@@ -140,6 +148,14 @@
 	.card {
 		display: flex;
 		flex-direction: column;
+	}
+
+	.lowOpacity {
+		opacity: 1 !important;
+	}
+
+	.background {
+		display: none !important;
 	}
 
 	.reverse {

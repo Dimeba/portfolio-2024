@@ -38,6 +38,15 @@ const Card: React.FC<Props> = ({ items }) => {
 		window.open(url, '_blank', 'noopener,noreferrer')
 	}
 
+	// Check Device
+	const handleDevice = () => {
+		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+			navigator.userAgent
+		)
+	}
+
+	const [isMobile] = useState<boolean>(handleDevice())
+
 	return (
 		<div
 			className={styles.cards}
@@ -47,20 +56,25 @@ const Card: React.FC<Props> = ({ items }) => {
 			{items.map((item, index) => (
 				<a
 					key={item.sys.id}
+					className={styles.cardLink}
 					href={item.link}
 					aria-label={`Link to ${item.subtitle} website.`}
 					target='_blank'
+					onClick={!isMobile ? e => e.preventDefault() : undefined}
 				>
 					<div
 						className={`${styles.card} ${item.image ? styles.reverse : ''}`}
 						onMouseEnter={() => setHoveredCard(index)}
 						onMouseLeave={() => setHoveredCard(null)}
 						style={{
-							opacity: !lowOpacity || hoveredCard == index ? 1 : 0.5
+							opacity:
+								!isMobile || !lowOpacity || hoveredCard == index ? 1 : 0.5
 						}}
 					>
 						{/* Background */}
-						{hoveredCard === index && <div className={styles.background}></div>}
+						{hoveredCard === index && !isMobile && (
+							<div className={styles.background}></div>
+						)}
 
 						{/* Content */}
 						<div className={styles.leftColumn}>
@@ -85,6 +99,7 @@ const Card: React.FC<Props> = ({ items }) => {
 										handleMouseEnter(dispatch, <HiArrowUpRight size={24} />)
 									}
 									onMouseLeave={() => handleMouseLeave(dispatch)}
+									onClick={() => openLinkInNewTab(item.link)}
 								>
 									<h3>{item.title}</h3> <HiArrowUpRight size={14} />
 								</div>

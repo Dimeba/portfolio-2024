@@ -74,8 +74,7 @@ const Card: React.FC<Props> = ({ items }) => {
 						onMouseEnter={() => setHoveredCard(index)}
 						onMouseLeave={() => setHoveredCard(null)}
 						style={{
-							opacity:
-								!isMobile || !lowOpacity || hoveredCard == index ? 1 : 0.5
+							opacity: isMobile || !lowOpacity || hoveredCard == index ? 1 : 0.5
 						}}
 					>
 						{/* Background */}

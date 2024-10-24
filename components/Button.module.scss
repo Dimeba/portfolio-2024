@@ -1,0 +1,54 @@
+@use '@/app/base';
+
+%button {
+	cursor: none;
+	display: flex;
+	align-items: center;
+	gap: 0.5rem;
+	font-weight: 600;
+	transition: 0.2s;
+	width: fit-content;
+}
+
+%button:hover {
+	gap: 1rem;
+}
+
+.button {
+	@extend %button;
+
+	svg {
+		transition: transform 0.2s;
+	}
+}
+
+.button:hover {
+	color: base.$highlight;
+
+	p {
+		color: base.$highlight;
+	}
+}
+
+.boxButton {
+	color: base.$highlight;
+	padding: 0.5rem 1rem;
+	border: 2px solid base.$highlight;
+	border-radius: 4px;
+
+	@extend %button;
+}
+
+.boxButton:hover {
+	background-color: base.$highlight;
+	color: base.$background;
+}
+
+@media screen and (max-width: 1024px) {
+	%button {
+		cursor: pointer;
+	}
+}
+
+@media screen and (max-width: 768px) {
+}

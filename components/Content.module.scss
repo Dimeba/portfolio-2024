@@ -18,30 +18,6 @@
 	}
 }
 
-.resumeLink {
-	display: flex;
-	gap: 0.5rem;
-	align-items: center;
-	font-weight: 700;
-	transition: 0.3s;
-
-	svg {
-		transition: transform 0.2s;
-	}
-}
-
-.resumeLink:hover {
-	color: base.$highlight;
-
-	p {
-		color: base.$highlight;
-	}
-
-	svg {
-		transform: translateX(0.5rem);
-	}
-}
-
 .disclaimer {
 	* {
 		font-size: 0.625rem;

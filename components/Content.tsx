@@ -1,5 +1,3 @@
-'use client'
-
 // styles
 import styles from './Content.module.scss'
 
@@ -8,13 +6,7 @@ import Bio from './Bio'
 import Cards from './Cards'
 import { Suspense } from 'react'
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
-import { BsArrowRight } from 'react-icons/bs'
-
-// hooks
-import { handleMouseEnter, handleMouseLeave } from '@/hooks/cursorHandlers'
-
-// redux
-import { useDispatch } from 'react-redux'
+import Button from './Button'
 
 // lib
 import apolloClient from '@/lib/apolloClient'
@@ -46,7 +38,6 @@ const Content: React.FC<Props> = async ({
 }) => {
 	const experienceitems: ContentItemEntry[] = []
 	const selectProjectsitems: ContentItemEntry[] = []
-	const dispatch = useDispatch()
 
 	for (const item of experience.contentCollection.items) {
 		const { data } = await apolloClient.query<GetContentItemResponse>({
@@ -79,21 +70,12 @@ const Content: React.FC<Props> = async ({
 					</Suspense>
 				</div>
 
-				<a
-					href={resume.url}
-					aria-label='Link to my resume.'
-					target='_blank'
-					onMouseEnter={() =>
-						handleMouseEnter(dispatch, <BsArrowRight size={24} />)
-					}
-					onMouseLeave={() => handleMouseLeave(dispatch)}
-					style={{ cursor: 'none' }}
-				>
-					<div className={styles.resumeLink}>
-						<p>View Full Resume</p>
-						<BsArrowRight size={20} />
-					</div>
-				</a>
+				<Button
+					text='View Full Resume'
+					link={resume.url}
+					label='Link to my resume.'
+					box={false}
+				/>
 			</div>
 
 			<div className={styles.section} id='projects'>

@@ -3,6 +3,7 @@ import styles from './Hero.module.scss'
 
 // components
 import Social from './Social'
+import Button from './Button'
 import { BsArrowRight } from 'react-icons/bs'
 
 // types
@@ -24,10 +25,12 @@ const Hero: React.FC<Props> = ({ jobTitle, about, resume }) => {
 					<p>{about}</p>
 				</div>
 
-				<a className={styles.resume} href={resume.url} target='_blank'>
-					View Resume
-					<BsArrowRight size={20} />
-				</a>
+				<Button
+					text='View Resume'
+					link={resume.url}
+					label='Link to my resume.'
+					box
+				/>
 			</div>
 
 			<Social />

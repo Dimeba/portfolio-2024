@@ -3,9 +3,6 @@
 // styles
 import styles from './CustomCursor.module.scss'
 
-// components
-import { HiArrowUpRight } from 'react-icons/hi2'
-
 // hooks
 import { useEffect, useState } from 'react'
 

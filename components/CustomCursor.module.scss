@@ -9,7 +9,7 @@
 
 .cursorBackground {
 	@extend %elements;
-	height: 1024px;
+	height: 1200px;
 	aspect-ratio: 1;
 	background: radial-gradient(rgba(#2ceaa3, 0.2), transparent 50%);
 	mix-blend-mode: soft-light;
@@ -43,4 +43,14 @@
 	100% {
 		transform: scale(1);
 	}
+}
+
+@media screen and (max-width: 1024px) {
+	.cursorBackground,
+	.cursorElement {
+		display: none;
+	}
+}
+
+@media screen and (max-width: 768px) {
 }

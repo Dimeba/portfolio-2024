@@ -12,7 +12,7 @@ import { HiArrowUpRight } from 'react-icons/hi2'
 import { MdOutlineBusinessCenter } from 'react-icons/md'
 
 // hooks
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { handleMouseEnter, handleMouseLeave } from '@/hooks/cursorHandlers'
 
 // redux
@@ -40,12 +40,19 @@ const Card: React.FC<Props> = ({ items }) => {
 
 	// Check Device
 	const handleDevice = () => {
-		return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-			navigator.userAgent
-		)
+		if (typeof window !== 'undefined') {
+			return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+				navigator.userAgent
+			)
+		}
+		return false
 	}
 
-	const [isMobile] = useState<boolean>(handleDevice())
+	const [isMobile, setIsMobile] = useState<boolean>(false)
+
+	useEffect(() => {
+		setIsMobile(handleDevice()) // Run the device check on the client-side only
+	}, [])
 
 	return (
 		<div
@@ -60,7 +67,7 @@ const Card: React.FC<Props> = ({ items }) => {
 					href={item.link}
 					aria-label={`Link to ${item.subtitle} website.`}
 					target='_blank'
-					onClick={!isMobile ? e => e.preventDefault() : undefined}
+					onClick={isMobile ? e => e.preventDefault() : undefined}
 				>
 					<div
 						className={`${styles.card} ${item.image ? styles.reverse : ''}`}

@@ -22,6 +22,21 @@ export const metadata: Metadata = {
 		'Front web developer & designer with a passion for delivering creative, high-impact solutions from concept to launch.',
 	icons: {
 		icon: '/favicon.svg'
+	},
+	openGraph: {
+		title: 'Filip Stojanovic',
+		description:
+			'Front web developer & designer with a passion for delivering creative, high-impact solutions from concept to launch.',
+		url: 'https://filip-stojanovic.dev/',
+		images: [
+			{
+				url: '/cover.jpg',
+				width: 1200,
+				height: 630,
+				alt: "Default sharing image for Filip Stojanovic's website"
+			}
+		],
+		type: 'website'
 	}
 }
 

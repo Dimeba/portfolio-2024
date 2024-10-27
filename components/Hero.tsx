@@ -4,7 +4,6 @@ import styles from './Hero.module.scss'
 // components
 import Social from './Social'
 import Button from './Button'
-import { BsArrowRight } from 'react-icons/bs'
 
 // types
 import { Asset } from '@/types/contentfulTypes'

@@ -17,6 +17,7 @@ import { handleMouseEnter, handleMouseLeave } from '@/hooks/cursorHandlers'
 
 // redux
 import { useDispatch } from 'react-redux'
+import { Icon } from '@/redux/slices/cursorSlice'
 
 // types
 import { ContentItemEntry } from '@/types/contentfulTypes'
@@ -102,7 +103,7 @@ const Card: React.FC<Props> = ({ items }) => {
 								<div
 									className={styles.title}
 									onMouseEnter={() =>
-										handleMouseEnter(dispatch, <HiArrowUpRight size={24} />)
+										handleMouseEnter(dispatch, Icon.ARROW_UP_RIGHT)
 									}
 									onMouseLeave={() => handleMouseLeave(dispatch)}
 									onClick={() => openLinkInNewTab(item.link)}
@@ -129,7 +130,7 @@ const Card: React.FC<Props> = ({ items }) => {
 											aria-label={`Link to ${reference.title} website.`}
 											className={styles.reference}
 											onMouseEnter={() =>
-												handleMouseEnter(dispatch, <HiArrowUpRight size={24} />)
+												handleMouseEnter(dispatch, Icon.ARROW_UP_RIGHT)
 											}
 											onMouseLeave={() => handleMouseLeave(dispatch)}
 										>

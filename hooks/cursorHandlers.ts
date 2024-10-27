@@ -6,13 +6,11 @@ import {
 	setShowCursor,
 	setIcon,
 	resetCursor,
-	CursorSize
+	CursorSize,
+	Icon
 } from '@/redux/slices/cursorSlice'
 
-export const handleMouseEnter = (
-	dispatch: AppDispatch,
-	icon: ReactNode
-): void => {
+export const handleMouseEnter = (dispatch: AppDispatch, icon: Icon): void => {
 	dispatch(setCursorSize(CursorSize.LARGE))
 	dispatch(setShowCursor(true))
 	dispatch(setIcon(icon))

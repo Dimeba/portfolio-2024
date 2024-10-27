@@ -11,6 +11,7 @@ import { handleMouseEnter, handleMouseLeave } from '@/hooks/cursorHandlers'
 
 // redux
 import { useDispatch } from 'react-redux'
+import { Icon } from '@/redux/slices/cursorSlice'
 
 interface Props {
 	text: string
@@ -28,9 +29,7 @@ const Button: React.FC<Props> = ({ text, link, label, box }) => {
 			aria-label={label}
 			className={box ? styles.boxButton : styles.button}
 			target='_blank'
-			onMouseEnter={() =>
-				handleMouseEnter(dispatch, <BsArrowRight size={24} />)
-			}
+			onMouseEnter={() => handleMouseEnter(dispatch, Icon.ARROW_RIGHT)}
 			onMouseLeave={() => handleMouseLeave(dispatch)}
 		>
 			{text}

@@ -3,12 +3,17 @@
 // styles
 import styles from './CustomCursor.module.scss'
 
+// components
+import { HiArrowUpRight } from 'react-icons/hi2'
+import { BsArrowRight } from 'react-icons/bs'
+
 // hooks
 import { useEffect, useState } from 'react'
 
 // redux
 import { useSelector } from 'react-redux'
 import { RootState } from '@/redux/store'
+import { Icon } from '@/redux/slices/cursorSlice'
 
 const CustomCursor = () => {
 	const [position, setPosition] = useState({ x: 0, y: 0 })
@@ -46,7 +51,8 @@ const CustomCursor = () => {
 						width: cursorSize
 					}}
 				>
-					{icon}
+					{icon == Icon.ARROW_RIGHT && <BsArrowRight size={24} />}
+					{icon == Icon.ARROW_UP_RIGHT && <HiArrowUpRight size={24} />}
 				</div>
 			)}
 		</>

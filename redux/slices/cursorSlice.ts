@@ -1,5 +1,8 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import React, { ReactNode } from 'react'
+
+// components
+import { HiArrowUpRight } from 'react-icons/hi2'
+import { BsArrowRight } from 'react-icons/bs'
 
 export enum CursorSize {
 	SMALL = '1rem',
@@ -14,7 +17,7 @@ export enum Icon {
 type CursorState = {
 	cursorSize: CursorSize
 	showCursor: boolean
-	icon: ReactNode | null
+	icon: Icon | null
 }
 
 const initialState: CursorState = {
@@ -33,7 +36,7 @@ const cursorSlice = createSlice({
 		setShowCursor(state, action: PayloadAction<boolean>) {
 			state.showCursor = action.payload
 		},
-		setIcon(state, action: PayloadAction<ReactNode>) {
+		setIcon(state, action: PayloadAction<Icon>) {
 			state.icon = action.payload
 		},
 		resetCursor(state) {

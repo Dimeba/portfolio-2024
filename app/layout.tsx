@@ -17,6 +17,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 // metadata
 export const metadata: Metadata = {
+	metadataBase: new URL('https://filip-stojanovic.dev/'),
 	title: 'Filip Stojanovic',
 	description:
 		'Front web developer & designer with a passion for delivering creative, high-impact solutions from concept to launch.',

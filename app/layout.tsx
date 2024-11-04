@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 // styles
 import './globals.scss'
@@ -60,6 +61,9 @@ export default function RootLayout({
 						{children}
 					</ClientProvider>
 				</Suspense>
+				<GoogleAnalytics
+					gaId={process.env.GOOGLE_ANALYTICS || 'default-ga-id'}
+				/>
 			</body>
 		</html>
 	)
